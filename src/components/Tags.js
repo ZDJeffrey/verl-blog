@@ -26,14 +26,14 @@ export default function Tags(props) {
       <meta property="og:description" content={desc} />
       <meta name="twitter:description" content={desc} />
 
-      <meta property="og:image" content={"https://blog.verl.com" + image} />
-      <meta name="twitter:image" content={"https://blog.verl.com" + image} />
+      <meta property="og:image" content={"https://zdjeffrey.github.io/verl-blog" + image} />
+      <meta name="twitter:image" content={"https://zdjeffrey.github.io/verl-blog" + image} />
 
       <meta name="twitter:image:alt" content={alt} />
 
       <meta property="og:type" content="website" />
-      <meta property="og:url" content={"https://blog.verl.com" + slug} />
-      <meta name="twitter:url" content={"https://blog.verl.com" + slug} />
+      <meta property="og:url" content={"https://zdjeffrey.github.io/verl-blog" + slug} />
+      <meta name="twitter:url" content={"https://zdjeffrey.github.io/verl-blog" + slug} />
       <meta name="twitter:card" content="summary_large_image" />
 
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />

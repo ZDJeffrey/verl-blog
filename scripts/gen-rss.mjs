@@ -3,7 +3,7 @@ import path from "path";
 import { fileURLToPath } from "url";
 import RSS from "rss";
 
-const rootUrl = "https://zdjeffrey.github.io/verl-blog/";
+const rootUrl = "https://zdjeffrey.github.io/verl-blog";
 const projectRoot = path.join(fileURLToPath(import.meta.url), "..", "..");
 
 /**
