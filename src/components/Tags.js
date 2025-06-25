@@ -8,11 +8,11 @@ export default function Tags(props) {
   const title = props.title ? props.title + " | VERL" : "VERL";
   const desc = props.desc
     ? props.desc
-    : "VERL is a flexible, efficient and production-ready RL training library for large language models (LLMs).";
+    : "veRL is a flexible, efficient and production-ready RL training library for large language models (LLMs).";
   const image = props.image ? props.image : `${prefix}/social.png`;
   const alt = props.alt
     ? props.alt
-    : "The text: VERL, Volcano Engine Reinforcement Learning for LLMs.";
+    : "The text: veRL, Volcano Engine Reinforcement Learning for LLMs.";
   const slug = props.slug ? props.slug : router.route;
 
   return (

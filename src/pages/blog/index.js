@@ -14,7 +14,7 @@ export default function Blog({ posts }) {
       <Tags title="Blog" />
       <div className="container px-5">
         <h1 className="text-8xl md:text-8xl font-bold pb-2">BLOG</h1>
-        <div className="text-2xl pb-4">Latest updates and releases by VERL are announced through our blogpost series.</div>
+        <div className="text-2xl pb-4">Latest updates and releases by veRL are announced through our blogpost series.</div>
         <hr className="mb-5  md:hidden" />
 
         {posts.map(({ slug, frontmatter, content, date }) => {

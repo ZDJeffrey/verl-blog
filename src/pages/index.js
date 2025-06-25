@@ -44,7 +44,7 @@ export default function Home() {
 
               <Link href="https://github.com/volcengine/verl">
                 <div className="">
-                  <p className="text-2xl pb-1">VERL</p>
+                  <p className="text-2xl pb-1">veRL</p>
                   <hr />
                   <p className="pt-2">
                     Volcano Engine Reinforcement Learning for LLMs.
