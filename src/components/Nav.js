@@ -60,7 +60,7 @@ export default function Nav() {
           <FaTwitter />
         </a>
         <a
-          href="https://blog.verl.com/rss.xml"
+          href="https://zdjeffrey.github.io/verl-blog/rss.xml"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -188,7 +188,7 @@ function Hamburger() {
               <FaTwitter />
             </a>
             <a
-              href="https://blog.verl.com/rss.xml"
+              href="https://zdjeffrey.github.io/verl-blog/rss.xml"
               target="_blank"
               rel="noopener noreferrer"
             >

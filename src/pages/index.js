@@ -6,13 +6,14 @@ import { useRouter } from "next/router";
 import "react-slideshow-image/dist/styles.css";
 
 export default function Home() {
+  const prefix = process.env.NEXT_PUBLIC_PREFIX_URL || '';
   const router = useRouter();
   useEffect(() => {
     if (location.hash === "#contact") {
       router.push("/gdpr");
     }
   }, []);
-
+  
   return (
     <>
       <Slider className="md:hidden" />
@@ -25,7 +26,7 @@ export default function Home() {
               <div className="flex justify-center">
                 <h1 className="text-8xl md:text-8xl font-bold">VERL</h1>
                 {/* <div className="flex items-center">
-                 <img src={"/favicon.png"} className="pl-4 pb-1 h-16" />
+                  <img src={`${prefix}/favicon.png`} className="pl-4 pb-1 h-16" />
                 </div> */}
               </div>
               <p className="italic pb-3">
@@ -61,6 +62,7 @@ export default function Home() {
 
 function Slider({ className }) {
   const slideImages = ["volcengine"];
+  const prefix = process.env.NEXT_PUBLIC_PREFIX_URL || '';
 
   return (
     <div className={"z-0 h-screen w-full fixed md:absolute " + className}>
@@ -70,7 +72,7 @@ function Slider({ className }) {
             return (
               <picture key={index}>
                 <img
-                  src={"/images/gallery/" + slideImage + ".png"}
+                  src={`${prefix}/images/gallery/${slideImage}.png`}
                   className="object-cover  h-full w-full opacity-20 md:opacity-25"
                 />
               </picture>

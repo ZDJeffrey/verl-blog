@@ -15,7 +15,10 @@ const nextConfig = {
   env: {
     storePicturesInWEBP: true,
     generateAndUseBlurImages: true,
+    NEXT_PUBLIC_PREFIX_URL: process.env.NEXT_PUBLIC_PREFIX_URL || '',
   },
+  basePath: process.env.NEXT_PUBLIC_PREFIX_URL || '',
+  assetPrefix: process.env.NEXT_PUBLIC_PREFIX_URL || '',
 };
 
 module.exports = nextConfig;

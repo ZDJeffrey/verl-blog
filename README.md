@@ -1,6 +1,6 @@
 # VERL Blog
 
-This repo hosts all the content within https://blog.verl.com. 
+This repo hosts all the content within https://zdjeffrey.github.io/verl-blog. 
 
 ## Develop and Deploy
 See the [package.json](./package.json)

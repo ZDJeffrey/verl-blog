@@ -7,6 +7,8 @@ import dateFormat from "dateformat";
 import ExportedImage from "next-image-export-optimizer";
 
 export default function Blog({ posts }) {
+  const prefix = process.env.NEXT_PUBLIC_PREFIX_URL || '';
+
   return (
     <div className="w-full flex justify-center pt-16 md:pt-5">
       <Tags title="Blog" />
@@ -29,7 +31,7 @@ export default function Blog({ posts }) {
               <div className="border mb-5 hover:bg-paper hover:text-sky transition-colors cursor-pointer bg-sky text-paper border-paper flex flex-col lg:flex-row items-stretch shadow-lg shadow-neutral-800/20">
                 <div className="basis-2/5 team-wrap">
                   <ExportedImage
-                    src={frontmatter.previewImg}
+                    src={`${prefix}${frontmatter.previewImg}`}
                     alt={frontmatter.title}
                     layout="responsive"
                     width={1600}
@@ -54,6 +56,8 @@ export default function Blog({ posts }) {
 }
 
 export async function getStaticProps() {
+  const prefix = process.env.NEXT_PUBLIC_PREFIX_URL || '';
+
   const files = fs.readdirSync("blog");
 
   const posts = files.map((fileName) => {
@@ -62,10 +66,16 @@ export async function getStaticProps() {
     const { data: frontmatter, content } = matter(readFile);
     const date = Date.parse(frontmatter.date);
 
+    {/* Replace Image Path */}
+    const replacedContent = content
+      .replace(/!\[(.*?)\]\(\s*(\/[^)]+)\s*\)/g, `![$1](${prefix}$2)`)
+      .replace(/<img\s+([^>]*?)src=["']\/([^"']+)["']/g, `<img $1src="${prefix}/$2"`);
+
+
     return {
       slug,
       frontmatter,
-      content,
+      content: replacedContent,
       date,
     };
   });

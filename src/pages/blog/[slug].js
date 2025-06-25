@@ -9,6 +9,8 @@ import React, { useEffect } from 'react';
 import Head from 'next/head';
 
 export default function Post({ frontmatter, content, slug }) {
+  const prefix = process.env.NEXT_PUBLIC_PREFIX_URL || '';
+
   useEffect(() => {
     // Check if MathJax object is available
     if (window.MathJax) {
@@ -26,7 +28,7 @@ export default function Post({ frontmatter, content, slug }) {
       <Tags
         title={frontmatter.title}
         desc={md({ html: true }).use(mdgh, {prefixHeadingIds: false}).render(content).slice(0, 157) + "..."}
-        image={frontmatter.previewImg}
+        image={`${prefix}${frontmatter.previewImg}`}
         slug={"/blog/" + slug}
       />
       <div className="container px-5" lang="en">
@@ -57,12 +59,19 @@ export default function Post({ frontmatter, content, slug }) {
 }
 
 export async function getStaticProps({ params: { slug } }) {
+  const prefix = process.env.NEXT_PUBLIC_PREFIX_URL || '';
+
   const fileName = fs.readFileSync(`blog/${slug}.md`, "utf-8");
   const { data: frontmatter, content } = matter(fileName);
+
+  const replacedContent = content
+  .replace(/!\[(.*?)\]\(\s*(\/[^)]+)\s*\)/g, `![$1](${prefix}$2)`)
+  .replace(/<img\s+([^>]*?)src=["']\/([^"']+)["']/g, `<img $1src="${prefix}/$2"`);
+
   return {
     props: {
       frontmatter,
-      content,
+      content: replacedContent,
       slug,
     },
   };

@@ -23,12 +23,20 @@ export default function About({ frontmatter, content }) {
 }
 
 export async function getStaticProps() {
+  const prefix = process.env.NEXT_PUBLIC_PREFIX_URL || '';
+  
   const fileName = fs.readFileSync(`content/about.md`, "utf-8");
   const { data: frontmatter, content } = matter(fileName);
+
+  {/* Replace Image Path */}
+  const replacedContent = content
+    .replace(/!\[(.*?)\]\(\s*(\/[^)]+)\s*\)/g, `![$1](${prefix}$2)`)
+    .replace(/<img\s+([^>]*?)src=["']\/([^"']+)["']/g, `<img $1src="${prefix}/$2"`);
+
   return {
     props: {
       frontmatter,
-      content,
+      content: replacedContent,
     },
   };
 }
